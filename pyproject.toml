@@ -1,0 +1,68 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "raw-jpeg-matcher"
+version = "1.0.0"
+description = "A Python tool to find and copy RAW files corresponding to JPEG files"
+readme = "README.md"
+license = {file = "LICENSE"}
+authors = [
+    {name = "RAW-JPEG Matcher Tool", email = "example@example.com"}
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: OS Independent",
+    "Topic :: Multimedia :: Graphics",
+    "Topic :: System :: Filesystems",
+]
+requires-python = ">=3.10"
+dependencies = [
+    "exifread>=3.0.0",
+    "pillow>=9.0.0",
+]
+
+[project.optional-dependencies]
+cr3-support = [
+    "rawpy>=0.20.0",
+]
+
+test = [
+    "pytest>=7.0.0",
+    "hypothesis>=6.0.0",
+    "pytest-cov>=4.0.0",
+]
+
+[project.scripts]
+raw-jpeg-matcher = "src.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "--strict-markers",
+    "--strict-config",
+    "--verbose",
+]
+
+[tool.coverage.run]
+source = ["src"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = false
+fail_under = 80

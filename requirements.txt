@@ -1,0 +1,13 @@
+# Core dependencies for RAW-JPEG Matcher Tool
+exifread>=3.0.0
+pillow>=9.0.0
+
+# Optional CR3 support
+rawpy>=0.20.0
+
+# Testing dependencies
+pytest>=7.0.0
+hypothesis>=6.0.0
+
+# Additional dependencies for development
+pytest-cov>=4.0.0
